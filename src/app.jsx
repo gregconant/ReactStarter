@@ -3,7 +3,7 @@ var ReactDOM = require('react-dom');
 var ReactFire = require('reactfire');
 var Firebase = require('firebase');
 var Header = require('./header');
-var rootUrl = 'https://learningreact-3fa38.firebaseio.com';
+var rootUrl = 'https://learningreact-3fa38.firebaseio.com/';
 
 var myFirebaseRef = new Firebase(rootUrl + 'items/');
 
