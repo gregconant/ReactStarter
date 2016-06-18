@@ -23,10 +23,17 @@ module.exports = React.createClass({
     </div>
   },
   handleClick: function() {
-    console.log("I was clicked.");
+    // add this as new object to
+    // reactfire database.
+    // Ignore that it looks array-ish.
+    this.props.itemsStore.push({
+      text: this.state.text,
+      done: false // have i completed this to-do item
+    });
+
+    this.setState({ text: ''});
   },
   handleInputChange: function(event) {
-    console.log(event.target.value);
-
+    this.setState({text: event.target.value});
   }
 })
