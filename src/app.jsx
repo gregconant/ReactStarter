@@ -6,12 +6,13 @@ var Header = require('./header');
 var rootUrl = 'https://learningreact-3fa38.firebaseio.com/';
 
 var myFirebaseRef = new Firebase(rootUrl + 'items/');
-myFirebaseRef.authAnonymously(function(error, authData) {
-   if (error) {
-       console.log("Login failed.");
-   } else {
-       console.log("Authenticated successfully with payload: " + authData);
-   }
+
+myFirebaseRef.authWithOAuthPopup("google", function(error, authData) {
+  if (error) {
+    console.log("Authentication Failed!", error);
+  } else {
+    console.log("Authenticated successfully with payload:", authData);
+  }
 });
 
 var App = React.createClass({
