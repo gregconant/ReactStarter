@@ -3,6 +3,8 @@ var ReactDOM = require('react-dom');
 var ReactFire = require('reactfire');
 var Firebase = require('firebase');
 var Header = require('./header');
+var ToDoList = require('./todolist');
+
 var rootUrl = 'https://learningreact-3fa38.firebaseio.com/';
 
 var myFirebaseRef = new Firebase(rootUrl + 'items/');
@@ -28,6 +30,7 @@ var App = React.createClass({
           To-Do List
         </h2>
         <Header itemsStore={ this.firebaseRefs.items } />
+        <ToDoList itemsStore={ this.firebaseRefs.items } />
       </div>
     </div>
 
