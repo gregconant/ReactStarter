@@ -3,24 +3,21 @@ var ReactDOM = require('react-dom');
 var ReactFire = require('reactfire');
 var Firebase = require('firebase');
 var Header = require('./header');
-var ToDoList = require('./todolist');
+var List = require('./list');
 
 var rootUrl = 'https://learningreact-3fa38.firebaseio.com/';
 
 var myFirebaseRef = new Firebase(rootUrl + 'items/');
 
-myFirebaseRef.authWithOAuthPopup("google", function(error, authData) {
-  if (error) {
-    console.log("Authentication Failed!", error);
-  } else {
-    console.log("Authenticated successfully with payload:", authData);
-  }
-});
-
 var App = React.createClass({
   mixins: [ ReactFire ], // copies methods from mixins to this component
+  getInitialState: function() {
+    return {
+      items: {}
+    }
+  },
   componentWillMount: function() {
-    this.bindAsObject(myFirebaseRef, 'items');
+    this.bindAsObject(myFirebaseRef, 'items'); // binds to 'this.state.items'
     // this.state.items = {} from Firebase
   },
   render: function() {
@@ -29,8 +26,8 @@ var App = React.createClass({
         <h2 className="text-center">
           To-Do List
         </h2>
-        <Header itemsStore={ this.firebaseRefs.items } />
-        <ToDoList itemsStore={ this.firebaseRefs.items } />
+        <Header itemsStore={this.firebaseRefs.items} />
+        <List items={this.state.items} />
       </div>
     </div>
 
