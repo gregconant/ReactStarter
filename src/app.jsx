@@ -24,7 +24,7 @@ var App = React.createClass({
         myFirebaseRef.on('value', this.handleDataLoaded);
     },
     render: function () {
-        return <div className="row panel panel-default">
+        return <div className="row panel panel-default">Poop
             <div className="col-md-8 col-md-offset-2">
                 <h2 className="text-center">
                     To-Do List
